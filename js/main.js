@@ -14,12 +14,12 @@ const theButtons = document.querySelectorAll("#buttonHolder img"),
     //check with firstChild
     //if there is a child
     //puzzlePiecesDiv.appendChild(something needs to go here)
-    puzzlePiecesDiv = document.querySelectorAll(".puzzle-pieces");
+    puzzlePiecesDiv = document.querySelectorAll(".puzzle-pieces div");
 
 //store the dragged piece in a global variable
 //we will need it in the handleDrop function    
 let draggedPiece;
-
+ let puzzleBox; 
 function changeBGImage() {
     //console.log("changeBGImage called");
     //url('../images/backGround0.jpg');
@@ -47,23 +47,27 @@ function handleDrop(e) {
 
         //bug fix 1 will go here
     //can also check if there are no children
-    if(this.puzzlePieces >=1)  {
+    if(this.puzzlePieces >=1) {
         return;
     }
-}
-function defaultBehaviour(e) {
-    console.log ("dropzone here");
 
-
-this.appendChild(document.querySelector(`#${puzzlePieces}`));
+    
+this.appendChild(document.querySelector(`#${images}`));
 }
 
-function resetPuzzleboard(e) {
-    console.log("board has been reset");
-    if(this.puzzlePieces){
-        return;
+function handleDrop(resetBut) {
+    this.appendChild(puzzlePiecesDiv);
+    console.log ("piece is removed from board");
+}
+
+function handleDrop(puzzlePiecesDiv) {
+    this.appendChild(draggedPiece);
+    console.log ("dropped into puzzle piece container")
+
     }
-}
+
+
+
 //this will tell the puzzle pieces to return to the original position
 
 //event Listeners
@@ -75,8 +79,14 @@ dropZones.forEach(zone => zone.addEventListener("dragover", handleDragOver));
 
 dropZones.forEach(zone => zone.addEventListener("drop", handleDrop));
 
-puzzlePiecesDiv.forEach(zone => zone.addEventListener("abort",defaultBehaviour ));
+puzzlePieces.forEach(zone => zone.addEventListener("drop",handleDrop ));
 
-resetBut.forEach(button => button.addEventListener("click", resetPuzzleboard));
+//Reset button event was created along with function
+resetBut.forEach(button => button.addEventListener("click", handleDrop ));
+
+puzzlePiecesDiv.forEach(zone => zone.addEventListener("drop", handleDrop ));
+
+
+
 
 //event listener for resetBut ("click", resetPuzzleboard)
