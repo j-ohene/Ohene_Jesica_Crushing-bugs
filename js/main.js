@@ -3,6 +3,10 @@ const theButtons = document.querySelectorAll("#buttonHolder img"),
     puzzleBoard = document.querySelector(".puzzle-board"),
     puzzlePieces = document.querySelectorAll(".puzzle-pieces img"),
     dropZones = document.querySelectorAll(".drop-zone");
+    //since there are no parameters or js  set for #resetBut, the variable will be set here
+
+
+
 //store the dragged piece in a global variable
 //we will need it in the handleDrop function    
 let draggedPiece;
@@ -33,6 +37,9 @@ function handleDrop(e) {
     this.appendChild(draggedPiece);
 }
 
+//function resetBut(e){}
+//this will tell the puzzle peices to return to the original position
+
 //event Listeners
 theButtons.forEach(button => button.addEventListener("click", changeBGImage)); 
 
@@ -41,3 +48,5 @@ puzzlePieces.forEach(piece => piece.addEventListener("dragstart", handleStartDra
 dropZones.forEach(zone => zone.addEventListener("dragover", handleDragOver));
 
 dropZones.forEach(zone => zone.addEventListener("drop", handleDrop));
+
+//event listener for resetBut ("click", resetPuzzleboard)
