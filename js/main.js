@@ -2,16 +2,19 @@
 const theButtons = document.querySelectorAll("#buttonHolder img"),
     puzzleBoard = document.querySelector(".puzzle-board"),
     puzzlePieces = document.querySelectorAll(".puzzle-pieces img"),
-    dropZones = document.querySelectorAll(".drop-zone");
+    dropZones = document.querySelectorAll(".drop-zone"),
+    resetBut = document.querySelectorAll("#resetBut"),
+    
    
     //since there are no parameters or js  set for #resetBut, the variable will be set here
   //bug fix 2 will go here
+  //const resetBut = document.querySelectorAll("#resetBut"),
     //will use a forEach loop and if statement
     //i want to loop through dropzones and check if there is?
     //check with firstChild
     //if there is a child
     //puzzlePiecesDiv.appendChild(something needs to go here)
-
+    puzzlePiecesDiv = document.querySelectorAll(".puzzle-pieces");
 
 //store the dragged piece in a global variable
 //we will need it in the handleDrop function    
@@ -48,9 +51,20 @@ function handleDrop(e) {
         return;
     }
 }
+function defaultBehaviour(e) {
+    console.log ("dropzone here");
 
-//function resetBut(e){}
-//this will tell the puzzle peices to return to the original position
+
+this.appendChild(document.querySelector(`#${puzzlePieces}`));
+}
+
+function resetPuzzleboard(e) {
+    console.log("board has been reset");
+    if(this.puzzlePieces){
+        return;
+    }
+}
+//this will tell the puzzle pieces to return to the original position
 
 //event Listeners
 theButtons.forEach(button => button.addEventListener("click", changeBGImage)); 
@@ -60,5 +74,9 @@ puzzlePieces.forEach(piece => piece.addEventListener("dragstart", handleStartDra
 dropZones.forEach(zone => zone.addEventListener("dragover", handleDragOver));
 
 dropZones.forEach(zone => zone.addEventListener("drop", handleDrop));
+
+puzzlePiecesDiv.forEach(zone => zone.addEventListener("abort",defaultBehaviour ));
+
+resetBut.forEach(button => button.addEventListener("click", resetPuzzleboard));
 
 //event listener for resetBut ("click", resetPuzzleboard)
