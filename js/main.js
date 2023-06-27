@@ -3,6 +3,8 @@ const theButtons = document.querySelectorAll("#buttonHolder img"),
     puzzleBoard = document.querySelector(".puzzle-board"),
     puzzlePieces = document.querySelectorAll(".puzzle-pieces img"),
     dropZones = document.querySelectorAll(".drop-zone"),
+    //new variable for each drop Zone
+    dropZone = document.querySelectorAll(".drop-zone br bl tl tr"),
     resetBut = document.querySelectorAll("#resetBut"),
     
    
@@ -47,7 +49,7 @@ function handleDrop(e) {
 
         //bug fix 1 will go here
     //can also check if there are no children
-    if(this.puzzlePieces >=1) {
+    if(this.puzzlePieces (dropZone) >=1) {
         return;
     }
 
@@ -85,6 +87,11 @@ puzzlePieces.forEach(zone => zone.addEventListener("drop",handleDrop ));
 resetBut.forEach(button => button.addEventListener("click", handleDrop ));
 
 puzzlePiecesDiv.forEach(zone => zone.addEventListener("drop", handleDrop ));
+
+
+//indididual dropzone
+
+dropZone.forEach(zone => zone.addEventListener ("drop", handleDrop))
 
 
 
